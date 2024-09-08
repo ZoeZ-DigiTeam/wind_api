@@ -1,0 +1,15 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.docker
+
+# Python
+windapi/__pycache__/
+windapi/*/__pycache__/
+windapi/*/*/__pycache__/
+windapi/*/*/*/__pycache__/
+.env/
+.venv/
+venv/
