@@ -7,7 +7,7 @@ from wind_assessments.serializers import (
     WindAssessmentSerializer,
     )
 
-from wind_assessments.models import WindAssessment  # Import the WindAssessment model
+from wind_assessments.models import WindAssessment
 
 
 class CreateWindAssessmentView(generics.CreateAPIView):
@@ -17,7 +17,7 @@ class CreateWindAssessmentView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        """Create a new wind assessment and assign it to the authenticated user."""
+        """Create new wind assessment and assign it to authenticated user."""
         serializer.save(user=self.request.user)
 
 

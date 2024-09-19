@@ -6,6 +6,8 @@ from wind_assessments.models import WindAssessment
 from django.contrib.auth import get_user_model
 from decimal import Decimal
 # Create your tests here.
+
+
 class WindAssessmentModelTests(TestCase):
     """Test Wind Assessment model."""
 
@@ -25,4 +27,7 @@ class WindAssessmentModelTests(TestCase):
             assessment_notes='Sample notes for the wind assessment.'
         )
 
-        self.assertEqual(str(wind_assessment), f"Wind Assessment for {wind_assessment.location} on {wind_assessment.date}")
+        self.assertEqual(
+            str(wind_assessment),
+            f"Assess for {wind_assessment.location} on {wind_assessment.date}"
+            )

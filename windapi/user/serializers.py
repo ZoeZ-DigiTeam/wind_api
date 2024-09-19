@@ -34,12 +34,11 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-
 class AuthTokenSerializer(serializers.Serializer):
     """Serializer for the user auth token."""
     email = serializers.EmailField()
     password = serializers.CharField(
-        style = {'input_type': 'password'},
+        style={'input_type': 'password'},
         trim_whitespace=False,
     )
 
@@ -58,5 +57,3 @@ class AuthTokenSerializer(serializers.Serializer):
 
         attrs['user'] = user
         return attrs
-
-

@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 # Create your models here.
+
+
 class WindAssessment(models.Model):
     """Model for wind assessments."""
 
@@ -16,7 +18,11 @@ class WindAssessment(models.Model):
     date = models.DateField()
     wind_speed = models.DecimalField(max_digits=5, decimal_places=2)
     wind_direction = models.CharField(max_length=255)
-    temperature = models.DecimalField(max_digits=4, decimal_places=1, null=True, blank=True)
+    temperature = models.DecimalField(
+        max_digits=4,
+        decimal_places=1,
+        null=True,
+        blank=True)
     assessment_notes = models.TextField(null=True, blank=True)
     report_url = models.URLField(max_length=500, null=True, blank=True)
 
