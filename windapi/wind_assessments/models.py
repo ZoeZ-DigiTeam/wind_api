@@ -27,4 +27,4 @@ class WindAssessment(models.Model):
     report_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
-        return f"Wind Assessment for {self.location} on {self.date}"
+        return f"Assess for {self.location} on {self.date}"
