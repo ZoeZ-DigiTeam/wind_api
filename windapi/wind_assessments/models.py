@@ -10,7 +10,9 @@ from django.contrib.auth import get_user_model
 class Turbine(models.Model):
     """Model to represent a Turbine."""
     name = models.CharField(max_length=255)
-    capacity = models.DecimalField(max_digits=6, decimal_places=2)  # Capacity in MW (e.g., 3.5 MW)
+    capacity = models.DecimalField(
+        max_digits=6,
+        decimal_places=2)  # Capacity in MW (e.g., 3.5 MW)
     manufacturer = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
@@ -37,12 +39,20 @@ class WindAssessment(models.Model):
     site_name = models.CharField(max_length=255)
     report_type = models.CharField(max_length=20, choices=REPORT_TYPE_CHOICES)
     lat = models.DecimalField(max_digits=8, decimal_places=5, default=0.0)
-    lon = models.DecimalField(max_digits=8, decimal_places=5, default=0.0)
-    location = models.CharField(max_length=255, null=True, blank=True)
-    turbine_type = models.CharField(max_length=20, choices=TURBINE_CHOICES)  # This is correct
+    lon = models.DecimalField(
+        max_digits=8,
+        decimal_places=5,
+        default=0.0)
+    location = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True)
+    turbine_type = models.CharField(
+        max_length=20,
+        choices=TURBINE_CHOICES)  # This is correct
     date = models.DateField()
     assessment_notes = models.TextField(null=True, blank=True)
     report_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
-        return f"Wind Assessment for {self.customer_name} at {self.site_name} on {self.date}"
+        return f"For {self.customer_name} at {self.site_name} on {self.date}"

@@ -5,7 +5,6 @@ Views for the Wind Assessment API endpoint.
 from rest_framework import generics, authentication, permissions
 from wind_assessments.models import WindAssessment
 from wind_assessments.serializers import WindAssessmentSerializer
-from rest_framework.permissions import IsAuthenticated
 
 
 class CreateWindAssessmentView(generics.CreateAPIView):
@@ -14,6 +13,7 @@ class CreateWindAssessmentView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
 
 class ListWindAssessmentView(generics.ListAPIView):
     """List all wind assessments for the authenticated user."""

@@ -21,8 +21,15 @@ class WindAssessmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = WindAssessment
         fields = [
-            'user', 'customer_name', 'site_name', 'report_type', 'lat', 'lon',
-            'location', 'turbine_type', 'assessment_notes', 'report_url', 'date'
+            'user',
+            'customer_name',
+            'site_name',
+            'report_type',
+            'lat',
+            'lon',
+            'location',
+            'turbine_type',
+            'assessment_notes',
+            'report_url',
+            'date'
         ]
-
-
