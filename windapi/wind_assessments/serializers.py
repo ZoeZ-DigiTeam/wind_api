@@ -4,20 +4,25 @@ Serializers for the Wind Assessment API view.
 # from django.utils.translation import gettext as _
 
 from rest_framework import serializers
-from wind_assessments.models import WindAssessment
+from wind_assessments.models import WindAssessment, Turbine
+
+
+class TurbineSerializer(serializers.ModelSerializer):
+    """Serializer for turbine objects."""
+
+    class Meta:
+        model = Turbine
+        fields = ['id', 'name', 'capacity']
 
 
 class WindAssessmentSerializer(serializers.ModelSerializer):
-    """Serializer for wind assessment objects."""
+    user = serializers.EmailField(source='user.email', read_only=True)
 
     class Meta:
         model = WindAssessment
         fields = [
-            'id',
-            'location',
-            'date',
-            'wind_speed',
-            'wind_direction',
-            'temperature',
-            'assessment_notes']
-        read_only_fields = ['id']
+            'user', 'customer_name', 'site_name', 'report_type', 'lat', 'lon',
+            'location', 'turbine_type', 'assessment_notes', 'report_url', 'date'
+        ]
+
+

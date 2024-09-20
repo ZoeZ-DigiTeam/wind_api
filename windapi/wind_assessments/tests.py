@@ -2,10 +2,11 @@
 Tests for models.
 """
 from django.test import TestCase
-from wind_assessments.models import WindAssessment
+from wind_assessments.models import WindAssessment, Turbine
 from django.contrib.auth import get_user_model
 from decimal import Decimal
 # Create your tests here.
+
 
 
 class WindAssessmentModelTests(TestCase):
@@ -17,17 +18,22 @@ class WindAssessmentModelTests(TestCase):
             email='test@example.com',
             password='testpass123'
         )
+
+        # Creating a wind assessment with the turbine type
         wind_assessment = WindAssessment.objects.create(
             user=user,
+            customer_name='Test Customer',
+            site_name='Test Site',
+            report_type='feasibility',  # Based on your choices
+            lat=Decimal('35.12345'),
+            lon=Decimal('-120.12345'),
             location='Test Location',
+            turbine_type='turbine_model_a',  # Use turbine_type instead of turbine instance
             date='2024-09-15',
-            wind_speed=Decimal('15.50'),
-            wind_direction='NE',
-            temperature=Decimal('22.5'),
             assessment_notes='Sample notes for the wind assessment.'
         )
 
         self.assertEqual(
             str(wind_assessment),
-            f"Assess for {wind_assessment.location} on {wind_assessment.date}"
-            )
+            f"Wind Assessment for {wind_assessment.customer_name} at {wind_assessment.site_name} on {wind_assessment.date}"
+        )
