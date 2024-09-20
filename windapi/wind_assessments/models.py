@@ -55,4 +55,4 @@ class WindAssessment(models.Model):
     report_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
-        return f"For {self.customer_name} at {self.site_name} on {self.date}"
+        return f"Wind Assessment for {self.customer_name}"
